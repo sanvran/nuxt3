@@ -1,19 +1,19 @@
 <template>
    <div>
-      <header>
-         <nav>
+      <header class="shadow-sm bg-white">
+         <nav class="container mx-auto p-4 flex justify-between">
             <h2> LOGO </h2>
          </nav>
       </header>
       <!-- start page content body -->
-      <div>
+      <div class="container mx-auto p-4">
          <slot />
       </div>
       <!-- content page body end-->
    </div>
    <!-- start footer -->
-   <footer>
-      <ul>
+   <footer class="container mx-auto p-4 flex justify-between border-t-2">
+      <ul class="flex gap-4">
          <li>
             <NuxtLink to="/">Home</NuxtLink>
          </li>

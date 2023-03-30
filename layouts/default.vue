@@ -1,8 +1,9 @@
 <template>
    <div>
-      <header>
-         <nav>
-            <ul>
+      <header class="shadow-sm bg-white">
+         <nav class="container mx-auto p-4 flex justify-between">
+            <NuxtLink to="/" class="font-bold"> Brand Log </NuxtLink>
+            <ul class="flex gap-4">
                <li>
                   <NuxtLink to="/">Home</NuxtLink>
                </li>
@@ -13,13 +14,13 @@
                   <NuxtLink to="/products">Products</NuxtLink>
                </li>
                <li>
-                  <NuxtLink to="/profile">Profile</NuxtLink>
+                  <NuxtLink to="/profile" class="btn">Profile</NuxtLink>
                </li>
             </ul>
          </nav>
       </header>
       <!-- start page content body -->
-      <div>
+      <div class="container mx-auto p-4">
          <slot />
       </div>
       <!-- content page body end-->
