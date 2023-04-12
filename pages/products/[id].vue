@@ -1,7 +1,15 @@
 <template>
    <div>
-      <h1>Produc route id: {{ id }} </h1>
-      <div class="bg-white">
+
+      <Head>
+         <Title>Product Detail | {{ product.title }}</Title>
+         <Meta name="description" :content="product.description" />
+      </Head>
+      <h1>Product route id: {{ id }} </h1>
+      <div v-if="error">
+         <h4>An Error Occured{{ errorRes.value?.message }}</h4>
+      </div>
+      <div v-else-if="product" class="bg-white">
          <div class="pt-6">
             <nav aria-label="Breadcrumb">
                <ol role="list" class="mx-auto flex max-w-2xl items-center space-x-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
@@ -70,18 +78,33 @@
             </div>
          </div>
       </div>
+      <div v-else>
+         <h1>Please wait...</h1>
+      </div>
    </div>
 </template>
 
 <script setup>
+const errorRes = ref({})
+let productTitle = ref()
+
 definePageMeta({
    layout: 'products'
 })
+console.log(productTitle._rawValue, '--product');
+
+console.log(productTitle, 'title');
+
 //  id must be match acording to the file name like: [id].vue
 const { id } = useRoute().params
 const endPoint = `https://fakestoreapi.com/products/${id}`
-const { data: product } = await useFetch(endPoint, { key: id })
+const { data: product, error } = await useFetch(endPoint, { key: id })
 
+productTitle.value = product
+console.log(productTitle, 'title');
+if (error) {
+   errorRes.value = error
+}
 </script>
 
 <style scoped></style>
